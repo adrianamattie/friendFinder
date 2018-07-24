@@ -1,0 +1,20 @@
+var friendData = require("../data/friends");
+
+module.exports =  (app) => {
+
+    app.get("/api/friends", (req, res) => {
+        res.json(friendsData);
+    });
+
+    app.post("/api/friends", (req, res) => {
+        friendsData.push(req.body);
+        res.json(true);
+
+
+    });
+
+    app.post("/api/clear",  () => {
+        friendsData = [];
+        console.log(friendsData);
+    });
+};
