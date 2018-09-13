@@ -31,11 +31,11 @@
         <h4>Do you like travel?</h4>
         <select class="form-control" id="q1">
             <option value=""></option>
-            <option value="1">1 (Strongly Disagree)</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5 (Strongly Agree)</option>
+            <option value="5">5</option>
         </select>
 
 
@@ -45,11 +45,11 @@
         <h4>Do you enjoy swimming?</h4>
         <select class="form-control" id="q2">
             <option value=""></option>
-            <option value="1">1 (Strongly Disagree)</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5 (Strongly Agree)</option>
+            <option value="5">5 </option>
         </select>
 
 
@@ -59,11 +59,11 @@
         <h4>Do you enjoy cooking?</h4>
         <select class="form-control" id="q3">
             <option value=""></option>
-            <option value="1">1 (Strongly Disagree)</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5 (Strongly Agree)</option>
+            <option value="5">5</option>
         </select>
 
 
@@ -73,11 +73,11 @@
         <h4>Do you read science fiction?</h4>
         <select class="form-control" id="q4">
             <option value=""></option>
-            <option value="1">1 (Strongly Disagree)</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5 (Strongly Agree)</option>
+            <option value="5">5</option>
         </select>
 
 
@@ -87,11 +87,11 @@
         <h4>Do you believe in capitalism?</h4>
         <select class="form-control" id="q5">
             <option value=""></option>
-            <option value="1">1 (Strongly Disagree)</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5 (Strongly Agree)</option>
+            <option value="5">5</option>
         </select>
 
 
@@ -101,11 +101,11 @@
         <h4>Do you like big cities?</h4>
         <select class="form-control" id="q6">
             <option value=""></option>
-            <option value="1">1 (Strongly Disagree)</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5 (Strongly Agree)</option>
+            <option value="5">5</option>
         </select>
 
 
@@ -115,11 +115,11 @@
         <h4>Do you like Australia?</h4>
         <select class="form-control" id="q7">
             <option value=""></option>
-            <option value="1">1 (Strongly Disagree)</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5 (Strongly Agree)</option>
+            <option value="5">5</option>
         </select>
 
         <h3>
@@ -128,11 +128,11 @@
         <h4>Do you like to exercise?</h4>
         <select class="form-control" id="q8">
             <option value=""></option>
-            <option value="1">1 (Strongly Disagree)</option>
+            <option value="1"></option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5 (Strongly Agree)</option>
+            <option value="5"></option>
         </select>
 
         <h3>
@@ -141,11 +141,11 @@
         <h4>Do you like thai food?</h4>
         <select class="form-control" id="q9">
             <option value=""></option>
-            <option value="1">1 (Strongly Disagree)</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5 (Strongly Agree)</option>
+            <option value="5">5</option>
         </select>
 
         <h3>
@@ -154,11 +154,11 @@
         <h4>Do you like having fun?</h4>
         <select class="form-control" id="q10">
             <option value=""></option>
-            <option value="1">1 (Strongly Disagree)</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5 (Strongly Agree)</option>
+            <option value="5">5</option>
         </select>
 
         <br />
@@ -168,6 +168,9 @@
         <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="submit">
             Submit Your Survey!
         </button>
+
+        <div id="bestieContent">
+        </div>
 
         <br />
         <br />
@@ -179,12 +182,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Your New Bestie Is:</h5>
+                        <div id="bestieContent">
+                        </div>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="content">
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -199,6 +203,7 @@
 
     <script>
         $("#submit").on("click", function () {
+            preventDefault();
             var userData = {
                 'name': $("#name").val(),
                 'photo': $("#photo").val(),
@@ -208,8 +213,9 @@
             };
 
             $.post("/api/friends", userData, function (data) {
-                $('#newBFName').text(data.matchName);
+                $("#newBFName").text(data.matchName);
                 $("#newBFImg").attr("src", data.photo);
+                $("#bestieContent").append(test);
             });
             $("#name").val("");
             $("#photo").val("");
@@ -250,6 +256,7 @@
             }
             newBF = friendsData[j].name;
             newBFPic = friendsData[j].photo;
+            test = friendsData[0];
 
 
         };
@@ -257,9 +264,10 @@
 
         var name = $(`Your friend match is ${newBF}`);
         var img = $(`<img src=${newBFPic} class='img-fluid'>`);
-        $('.content').append(img);
-        $('.content').append(name);
-        $('.content').text(`Your friend match is ${newBF}`);
+        $('#bestieContent').append(img);
+        $('#bestieContent').append(name);
+        $('#bestieContent').text(`Your friend match is ${newBF}`);
+        $('#bestieContent').text(test);
     </script>
 
 </body>
