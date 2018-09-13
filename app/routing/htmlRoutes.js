@@ -1,18 +1,18 @@
-//display survey page
+
 
 var path = require("path");
 
-module.exports = function (app) {
+module.exports = (app) => {
 
-    app.get("/home", function (req, response) {
+    app.get("/home", (req, response) => {
         response.sendFile(path.join(__dirname, "../public/home.html"));
     });
 
-    app.get("/survey", function (req, response) {
+    app.get("/survey", (req, response) => {
         response.sendFile(path.join(__dirname, "../public/survey.html"));
     });
 
-    app.get("*", function (req, response) {
+    app.get("*", (req, response) => {
         response.sendFile(path.join(__dirname, "../public/home.html"));
     });
 

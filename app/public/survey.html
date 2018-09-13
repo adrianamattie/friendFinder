@@ -1,12 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+
+    <title>Friend Finder</title>
 </head>
+
 <body>
-    <h1>HELLOO</h1>
+    <div class="container survey">
+
+        <h1>Answer to find your new bestie!</h1>
+        <hr>
+        <h3>About You</h3>
+        <h4>Name</h4>
+        <input type="text" id="name" class="form-control" required="false">
+
+        <h4>Link to Photo Image</h4>
+        <input type="text" id="photo" class="form-control" required="false">
+
+        <hr>
+
+        <h3>Question #1</h3>
+        <h4>Do you like travel?</h4>
+        <select class="form-control" id="q1">
+            <option value=""></option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+
+
+        <h3>
+            <strong>Question #2</strong>
+        </h3>
+        <h4>Do you enjoy swimming?</h4>
+        <select class="form-control" id="q2">
+            <option value=""></option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+
+
+        <h3>
+            <strong>Question #3</strong>
+        </h3>
+        <h4>Do you enjoy cooking?</h4>
+        <select class="form-control" id="q3">
+            <option value=""></option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+
+
+        <h3>
+            <strong>Question #4</strong>
+        </h3>
+        <h4>Do you read science fiction?</h4>
+        <select class="form-control" id="q4">
+            <option value=""></option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+
+
+        <h3>
+            <strong>Question #5</strong>
+        </h3>
+        <h4>Do you believe in capitalism?</h4>
+        <select class="form-control" id="q5">
+            <option value=""></option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+
+
+        <h3>
+            <strong>Question #6</strong>
+        </h3>
+        <h4>Do you like big cities?</h4>
+        <select class="form-control" id="q6">
+            <option value=""></option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+
+
+        <h3>
+            <strong>Question #7</strong>
+        </h3>
+        <h4>Do you like Australia?</h4>
+        <select class="form-control" id="q7">
+            <option value=""></option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+
+        <h3>
+            <strong>Question #8</strong>
+        </h3>
+        <h4>Do you like to exercise?</h4>
+        <select class="form-control" id="q8">
+            <option value=""></option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+
+        <h3>
+            <strong>Question #9</strong>
+        </h3>
+        <h4>Do you like thai food?</h4>
+        <select class="form-control" id="q9">
+            <option value=""></option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+
+        <h3>
+            <strong>Question #10</strong>
+        </h3>
+        <h4>Do you like having fun?</h4>
+        <select class="form-control" id="q10">
+            <option value=""></option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+
+        <br />
+        <br />
+
+
+        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="submit">
+            Submit Your Survey!
+        </button>
+
+        <br />
+        <br />
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Your New Bestie Is:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $("#submit").on("click", function () {
+            var userData = {
+                'name': $("#name").val(),
+                'photo': $("#photo").val(),
+                'scores': [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(),
+                    $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()
+                ]
+            };
+
+            $.post("/api/friends", userData, function (data) {
+                $('#newBFName').text(data.matchName);
+                $("#newBFImg").attr("src", data.photo);
+            });
+            $("#name").val("");
+            $("#photo").val("");
+            $("#q1").val("");
+            $("#q2").val("");
+            $("#q3").val("");
+            $("#q4").val("");
+            $("#q5").val("");
+            $("#q6").val("");
+            $("#q7").val("");
+            $("#q8").val("");
+            $("#q9").val("");
+            $("#q10").val("");
+        });
+
+        var matchName;
+        var matchImage;
+        for (var i = 0; i < friendsData.length; i++) {
+            var reset = 0;
+            for (var j = 0; j < userResponses.length; j++) {
+                var difference = Math.abs(friendsData[i].scores[j] - userResponses[j]);
+                var total = reset += difference;
+            };
+        };
+
+        var index;
+        var newBF;
+        var newBFPic;
+
+        function findingNewFriend(arr) {
+            index = 0;
+            var value = arr[0];
+            for (var j = 1; j < arr.length; j++) {
+                if (arr[j] < value) {
+                    value = arr[j];
+                    index = j;
+                }
+            }
+            newBF = friendsData[j].name;
+            newBFPic = friendsData[j].photo;
+
+
+        };
+        findingNewFriend()
+
+        var name = $(`Your friend match is ${newBF}`);
+        var img = $(`<img src=${newBFPic} class='img-fluid'>`);
+        $('.content').append(img);
+        $('.content').append(name);
+        $('.content').text(`Your friend match is ${newBF}`);
+    </script>
+
 </body>
+
 </html>

@@ -1,6 +1,6 @@
 var friends = [{
         "name": "Alexis Bledel",
-        "photo": "../assets/alexis-bledel.jpg",
+        "photo": "http://www.gilmorenews.com/uploads/2016/06/alexis-bledel-435.jpg",
         "scores": [
             4,
             3,
@@ -16,7 +16,7 @@ var friends = [{
     },
     {
         "name": "Milo Ventimiglia",
-        "photo": "../assets/milo-ventimiglia.jpg",
+        "photo": "https://i.ytimg.com/vi/MxDdNgW9RIg/maxresdefault.jpg",
         "scores": [
             5,
             1,
@@ -32,7 +32,7 @@ var friends = [{
     },
     {
         "name": "Matt Czuchry",
-        "photo": "../assets/matt-czuchry.jpg",
+        "photo": "https://celebrityxyz.com/i/i/m/a/t/matt-czuchry-4.jpg",
         "scores": [
             2,
             1,
@@ -48,7 +48,7 @@ var friends = [{
     },
     {
         "name": "Sean Gunn",
-        "photo": "../assets/sean-gunn.jpg",
+        "photo": "http://www.media3.hw-static.com/wp-content/uploads/3554872.jpg",
         "scores": [
             5,
             5,
@@ -64,7 +64,7 @@ var friends = [{
     },
     {
         "name": "Liza Weil",
-        "photo": "../assets/liza-weil.jpg",
+        "photo": "https://m.media-amazon.com/images/M/MV5BMTMwMTkwMDkyMF5BMl5BanBnXkFtZTcwMjQ1NjEzMQ@@._V1_UX214_CR0,0,214,317_AL_.jpg",
         "scores": [
             4,
             2,
