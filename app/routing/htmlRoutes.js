@@ -4,7 +4,7 @@ var path = require("path");
 
 module.exports = (app) => {
 
-    app.get("/home", (req, response) => {
+    app.get("/", (req, response) => {
         response.sendFile(path.join(__dirname, "../public/home.html"));
     });
 

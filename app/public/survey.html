@@ -9,7 +9,8 @@
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
-
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <title>Friend Finder</title>
 </head>
 
@@ -127,12 +128,12 @@
         </h3>
         <h4>Do you like to exercise?</h4>
         <select class="form-control" id="q8">
-            <option value=""></option>
-            <option value="1"></option>
+            <option value="">2</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5"></option>
+            <option value="5">5</option>
         </select>
 
         <h3>
@@ -165,109 +166,135 @@
         <br />
 
 
-        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="submit">
-            Submit Your Survey!
-        </button>
 
-        <div id="bestieContent">
-        </div>
 
+
+
+
+        <button type="submit" class="btn btn-primary submit" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="bestmatch">Submit</button>
         <br />
         <br />
-
-
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Your New Bestie Is:</h5>
-                        <div id="bestieContent">
-                        </div>
+                        <h5 class="modal-title" id="exampleModalLabel">Your bestie is:</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <div class="modal-body row">
+                        <div class="col-6 bestie">
 
+                        </div>
+                        <div class="col-6 you">
+
+                        </div>
+                        <!-- This is where the best friend information should be going -->
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal">Close</button>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <footer class="footer">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    </footer>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
 
     <script>
-        $("#submit").on("click", function () {
-            preventDefault();
-            var userData = {
-                'name': $("#name").val(),
-                'photo': $("#photo").val(),
-                'scores': [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(),
-                    $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()
+        // Variables
+        var diff = 0;
+        var diffArr = [];
+        var bestmatch = 0;
+
+        // Getting Form Data
+        $(".submit").on("click", function (event) {
+            event.preventDefault();
+
+            console.log("Works here");
+
+            // Here we grab the form elements
+            var newSurvey = {
+                // name: $("#friend-name").val(), 
+                // photo: $("#friend-photo").val().trim(),
+                scores: [parseInt($("#q1").val().trim()),
+                    parseInt($("#q2").val().trim()),
+                    parseInt($("#q3").val().trim()),
+                    parseInt($("#q4").val().trim()),
+                    parseInt($("#q5").val().trim()),
+                    parseInt($("#q6").val().trim()),
+                    parseInt($("#q7").val().trim()),
+                    parseInt($("#q8").val().trim())
                 ]
             };
-
-            $.post("/api/friends", userData, function (data) {
-                $("#newBFName").text(data.matchName);
-                $("#newBFImg").attr("src", data.photo);
-                $("#bestieContent").append(test);
-            });
-            $("#name").val("");
-            $("#photo").val("");
-            $("#q1").val("");
-            $("#q2").val("");
-            $("#q3").val("");
-            $("#q4").val("");
-            $("#q5").val("");
-            $("#q6").val("");
-            $("#q7").val("");
-            $("#q8").val("");
-            $("#q9").val("");
-            $("#q10").val("");
-        });
-
-        var matchName;
-        var matchImage;
-        for (var i = 0; i < friendsData.length; i++) {
-            var reset = 0;
-            for (var j = 0; j < userResponses.length; j++) {
-                var difference = Math.abs(friendsData[i].scores[j] - userResponses[j]);
-                var total = reset += difference;
-            };
-        };
-
-        var index;
-        var newBF;
-        var newBFPic;
-
-        function findingNewFriend(arr) {
-            index = 0;
-            var value = arr[0];
-            for (var j = 1; j < arr.length; j++) {
-                if (arr[j] < value) {
-                    value = arr[j];
-                    index = j;
+            console.log(newSurvey);
+            // Clear the form when submitting
+            // $("#friend-name").val(""),
+                $("#friend-photo").val(""),
+                $("#q1").val(""),
+                $("#q2").val(""),
+                $("#q3").val(""),
+                $("#q4").val(""),
+                $("#q5").val(""),
+                $("#q6").val(""),
+                $("#q7").val(""),
+                $("#q8").val("")
+            var currentURL = window.location.origin;
+            console.log(currentURL);
+            $.ajax({
+                url: currentURL + "/api/friends",
+                method: "GET"
+            }).then(function (data) {
+                console.log(currentURL + "/api/friends");
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    console.log(data[i].scores);
+                    console.log(newSurvey.scores);
+                    for (var j = 0; j < 8; j++) {
+                        console.log("Score of " + data[i].name + ": " + data[i].scores[j]);
+                        console.log("Score of " + newSurvey.name + ": " + newSurvey.scores[j]);
+                        
+                        diff += Math.abs((data[i].scores[j]) - (newSurvey.scores[j]));
+                    }
+                   
+                    // Push all of the differences into an array
+                    diffArr.push(diff);
+                    diff = 0;
                 }
-            }
-            newBF = friendsData[j].name;
-            newBFPic = friendsData[j].photo;
-            test = friendsData[0];
+               
+                
+                diffArr = [];
+                // Modal animation js
+                $('.modal-title').empty();
+                $('.bestie').empty();
+                $('.you').empty();
+                $('.modal-title').text('Your bestfriend is... ' + data[bestmatch].name);
+                var BFphoto = $(`<img src=${data[bestmatch].photo} class='img-fluid'>`);
+                var youphoto = $(`<img src=${newSurvey.photo} class='img-fluid'>`);
+                $('.bestie').append(BFphoto).append("<span>", data[bestmatch].name);
+                $('.you').append(youphoto).append("<span>", newSurvey.name);
+            })
+            // Changing page once survey is completed
+            $("#close-modal").on("click", function () {
+                setTimeout(function () {
+                    location.reload()
+                }, 1000);
+            });
 
-
-        };
-        findingNewFriend()
-
-        var name = $(`Your friend match is ${newBF}`);
-        var img = $(`<img src=${newBFPic} class='img-fluid'>`);
-        $('#bestieContent').append(img);
-        $('#bestieContent').append(name);
-        $('#bestieContent').text(`Your friend match is ${newBF}`);
-        $('#bestieContent').text(test);
+        })
     </script>
 
 </body>
